@@ -1,0 +1,55 @@
+#Include 'Totvs.ch'
+#Include 'Protheus.ch'
+
+/*
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Programa ºzTsay   ºAutor Caio Almeida             ºData 06/01/2026 º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Desc     ºUso da fucao TSay ADVPL                                    º±±
+±±º          ºcaso necessario, duplique ou apague esta linha              º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Uso      ºEmpresa de uso                                         º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+*/
+
+User Function zTFont()
+	Local oDlg1
+	Local cTituloJanela := "Utilitários Protheus"
+	Local oButton1
+	Local oButton2
+	Local oButton3
+	Local oButton4
+	Local oButton5
+	Local oSay1, oSay2, oSay3, oSay4, oSay5
+	Local oFont1 // Fonte para os say
+	Local oFont2 // Fonte para o botao
+
+	oDlg1 := TDialog():New(0,0,500,500,cTituloJanela,,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+
+	oFont1 := TFont():New('Comic Sans MS',,16,.T.)
+	oFont2 := TFont():New('Arial Black',,12,.T.)
+
+  /*
+  1- Coordenada vertical
+  2- Coordenada horizontal
+  3- Titulo do Botao
+  4- Elemento onde sera fixado
+  5- Acao executada(bloco de código) ao clicar no botão com o botão esquero do Mouse
+  */
+	oButton1 := TButton():New( 20, 20, "Clientes",oDlg1,{|| MATA030()}, 40,15,,,.F.,.T.,.F.,,.F.,,,.F. )
+	oSay1 := TSay():New(25, 70, {|| 'Abre a rotina do cadastro de cliente'})
+
+	oButton2 := TButton():New( 40, 20, "Fornecedor",oDlg1,{|| MATA020()}, 40,15,,,.F.,.T.,.F.,,.F.,,,.F. )
+	oSay2 := TSay():New(25, 70, {|| 'Abre a rotina do cadastro de fornecedore'})
+
+	oButton3 := TButton():New( 60, 20, "Bancos",oDlg1,{|| MATA070()}, 40,15,,,.F.,.T.,.F.,,.F.,,,.F. )
+	oSay3 := TSay():New(25, 70, {|| 'Abre a rotia do cadastro de bancos'})
+
+	oButton4 := TButton():New( 80, 20, "Produtos",oDlg1,{|| MATA010()}, 40,15,,,.F.,.T.,.F.,,.F.,,,.F. )
+	oSay4 := TSay():New(25, 70, {|| 'Abre a rotia do cadastro de produtos'})
+
+	oButton5 := TButton():New( 100, 20, "Fechar",oDlg1,{|| oDlg1:End()}, 40,15,,,.F.,.T.,.F.,,.F.,,,.F. )
+	oSay5 := TSay():New(25, 70, {|| 'Fecha a tela '})
