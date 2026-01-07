@@ -1,0 +1,20 @@
+#include 'Totvs.ch'
+#include 'Protheus.ch'
+
+/*/{Protheus.doc} zTDialog
+(long_description)
+@type user function
+@author Caio Almeida
+@since 08/12/2025
+@version 1.0
+/*/
+User Function zTDialog()
+Local oDlg1 //Variavel que recebera a chamada da classe TDialog
+
+//Cria a estrutura da tela
+oDlg1 := TDialog():New(180,180,550,700,'Cadastros de Protheuzeiro',,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+
+//Metodo que faz a chamada da tela
+oDlg1:Activate(,,,.T.)
+
+Return 

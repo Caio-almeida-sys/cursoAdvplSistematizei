@@ -1,0 +1,32 @@
+#include 'Totvs.ch'
+#include 'Protheus.ch'
+
+
+User Function zTButton()
+
+	Local oDlg1 //Variavel que recebera a chamada da classe TDialog
+    Local cTituloJanela := "Utilitarios do Protheus"
+	Local oButton1 //Variavel que armazenara a classe do primeiro botao "Clientes"
+	Local oButton2 //Variavel que armazenara a classe do segundo botao "Fornecedor"
+	Local oButton3 //Variavel que armazenara a classe do terceiro botao "Bancos"
+	Local oButton4 //Variavel que armazenara a classe do terceiro botao "Bancos"
+	Local oButton5  
+
+
+	//Cria a estrutura da tela
+    // https://tdn-homolog.totvs.com/display/tec/Construtor+TDialog%3ANew
+	oDlg1    := TDialog():New(0,0,500,500,cTituloJanela,,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+
+    // https://tdn.totvs.com/display/tec/Construtor+TButton%3ANew
+	oButton1 := TButton():New(20, 20, 	"Clientes"		,oDlg1, {||MATA030()}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. ) // chama a tela de clientes 
+	oButton2 := TButton():New(40, 40, 	"Fornecedores"	,oDlg1, {||MATA020()}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. ) // chama a tela de fornecedores
+	oButton3 := TButton():New(60, 60, 	"Bancos"		,oDlg1, {||MATA070()}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. ) //Chama a tela de bancos
+	oButton4 := TButton():New(80, 80, 	"Produtos"		,oDlg1, {||MATA010()}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. ) //Chama a tela de Produtos
+	oButton5 := TButton():New(100, 120, "Fechar"		,oDlg1, {||oDlg1:End()}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. ) //Fecha a aplicação
+
+
+	//Metodo que faz a chamada da tela
+    // https://tdn-homolog.totvs.com/display/tec/Activate
+	oDlg1:Activate(,,,.F.)
+
+Return
