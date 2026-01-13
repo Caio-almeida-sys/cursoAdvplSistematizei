@@ -3,15 +3,15 @@
 
 
 /*/{Protheus.doc} zTFont
-Fonte criado para aprender sobre a altera��o da fonte que � apresentado na abertura da tela.
+Fonte criado para aprender a realizar a criacao de tela utilizando a funcao MsAdvsize no qual retorna o tamanho do monitor automatico.
 @type function
 @version 12.1.2510
 @author Caioalmeida-PC
 @since 1/12/2026
 /*/
-User Function zTFont()
+User Function zMsAdvsize()
 	Local oDlg1
-	Local cTituloJanela := "Utilitários Protheus"
+	Local cTituloJanela := "Utilitarios Protheus"
 	Local oButton1
 	Local oButton2
 	Local oButton3
@@ -20,8 +20,9 @@ User Function zTFont()
 	Local oSay1, oSay2, oSay3, oSay4, oSay5
 	Local oFont1 // Fonte para os say
 	Local oFont2 // Fonte para o botao
+    Local aSize := MsAdvsize() // funcao interna que retorna um array com a posicao da tela 
 
-	oDlg1 := TDialog():New(0,0,500,500,cTituloJanela,,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+	oDlg1 := TDialog():New(aSize[7],aSize[1],aSize[6],aSize[5],cTituloJanela,,,,,CLR_BLACK,CLR_WHITE,,,.T.)
 
 	oFont1 := TFont():New('Comic Sans MS',,16,.T.,,,,,.T.,.T.)
 	oFont2 := TFont():New('Arial Black',,12,.F.,,,,,.F.,.F.)
@@ -31,7 +32,7 @@ User Function zTFont()
   2- Coordenada horizontal
   3- Titulo do Botao
   4- Elemento onde sera fixado
-  5- Acao executada(bloco de código) ao clicar no botão com o botão esquero do Mouse
+  5- Acao executada(bloco de cÃ³digo) ao clicar no botÃ£o com o botÃ£o esquero do Mouse
   */
 	oButton1 := TButton():New( 20, 20, "Clientes",oDlg1,{|| MATA030()}, 40,15,,oFont2,.F.,.T.,.F.,,.F.,,,.F. )
 	oSay1 := TSay():New(25, 65, {|| 'Abre a rotina do cadastro de cliente'},oDlg1,,oFont1,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)

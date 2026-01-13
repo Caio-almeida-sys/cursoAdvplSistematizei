@@ -48,3 +48,8 @@ User Function zTsay()
 
 	oButton5 := TButton():New( 100, 20, "Fechar",oDlg1,{|| oDlg1:End()}, 40,15,,,.F.,.T.,.F.,,.F.,,,.F. )
 	oSay5 := TSay():New(25, 70, {|| 'Fecha a tela '})
+	
+	//Metodo que faz a chamada da tela
+	oDlg1:Activate(,,,.T.)
+
+Return
