@@ -1,0 +1,73 @@
+#Include 'TOTVS.ch'
+#Include 'Protheus.ch'
+
+/*/{Protheus.doc} zTGet
+(long_description)
+@type user function
+@author user
+@since 26/01/2026
+@version version
+@param param_name, param_type, param_descr
+@return return_var, return_type, return_description
+@example
+(examples)
+@see (links_or_references)
+/*/
+User Function zTGet2()
+	Local oDlg1
+	Local oSay1
+	Local oSay2
+	Local oButton1
+	Local oFont1 // Fonte para os say
+
+	//Inicio do Tget
+	Local cGet1 := Space(6) // Variavel que captura o que foi digitado/ Para cada Tget se faz necessário uma variavel caracter para armazenar o que foi digitado.
+	Local oGet1 // Variavel responsavel por receber a Classe/ construtor TGet
+
+	Local cGet2 := Space(2)
+	Local oGet2
+
+	
+
+	oDlg1 := TDialog():New(0, 0, 200, 500,"Bloqueador de clientes",,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+
+	oSay1 := TSay():New(10, 10, {|| 'Cliente'},oDlg1,,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+	oGet1 := TGet():New(25,10,{|u| IIF(Pcount()>0,cGet1:=u,cGet1)},oDlg1,40,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet1,,,, )
+	oGet1:cF3 := "SA1"
+
+
+	oSay2 := TSay():New(10, 60, {|| 'Loja'},oDlg1,,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+	oGet2 := TGet():New(25, 60,{|u| IIF(Pcount()>0,cGet2:=u,cGet2)},oDlg1,30,10,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet2,,,, )
+
+
+	oButton1 := TButton():New( 60, 10, "Bloquear agora",oDlg1,{|| fBloq(cGet1,cGet2)}, 60,15,,oFont1,.F.,.T.,.F.,,.F.,,,.F. )
+
+	oDlg1:Activate(,,,.T.)
+
+Return
+
+
+
+/*/{Protheus.doc} fBloq
+	(Função responsavel por posicionar no cadastro de cliente e realizar a alteracao para bloqueado)
+	@type  Static Function
+	@author user
+	@since 31/01/2026
+	@version version
+	@param param_name, param_type, param_descr
+	@return return_var, return_type, return_description
+	@example
+	(examples)
+	@see (links_or_references)
+/*/
+Static Function fBloq(cCod, cLoja) // Recebe o conteudo do cGet1 e cGet2
+	
+	DbSelectArea("SA1")
+	SA1->(DbSeek(xFilial("SA1") + cCod + cLoja)) //Procura dentro o cadastro do cliente e loja dentro dos GETS 
+
+	RecLock("SA1", .F.) //usa-se .T. para inclusão e .F. para alterações
+		SA1->A1_MSBLQL := '1'
+	MsUnLock()
+
+	MsgInfo("O cliente com o código " + cCod + " e loja " + cLoja + " esta sendo bloqueado","ATENCAO")
+Return 
