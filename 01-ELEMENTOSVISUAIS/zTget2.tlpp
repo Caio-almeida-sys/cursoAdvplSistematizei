@@ -1,0 +1,47 @@
+#Include 'TOTVS.ch'
+#Include 'Protheus.ch'
+
+/*/{Protheus.doc} zTGet
+(long_description)
+@type user function
+@author user
+@since 26/01/2026
+@version version
+@param param_name, param_type, param_descr
+@return return_var, return_type, return_description
+@example
+(examples)
+@see (links_or_references)
+/*/
+User Function zTGet()
+    Local oDlg1
+    Local aSize := MsAdvsize() // funcao interna que retorna um array com a posicao da tela 
+    Local oSay1
+    Local oSay2
+    Local oButton1
+    Local oFont1 // Fonte para os say
+    
+    //Inicio do Tget
+    Local cGet1 := Space(15) // Variavel que captura o que foi digitado/ Para cada Tget se faz necessário uma variavel caracter para armazenar o que foi digitado. 
+    Local oGet1 // Variavel responsavel por receber a Classe/ construtor TGet
+
+    Local cGet2 := Space(30)
+    Local oGet2
+
+    oFont1 := TFont():New('Comic Sans MS',,16,.T.,,,,,.T.,.T.)
+
+
+    oDlg1 := TDialog():New(aSize[7],aSize[1],aSize[6],aSize[5],"Aprendendo a usar o TGET",,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+
+	oSay1 := TSay():New(10, 10, {|| 'Digite o seu nome'},oDlg1,,oFont1,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    oGet1 := TGet():New(30,10,{|u| IIF(Pcount()>0,cGet1:=u,cGet1)},oDlg1,060,010,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet1,,,, )
+    
+    oSay2 := TSay():New(10, 80, {|| 'Digite o seu endereco'},oDlg1,,oFont1,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    oGet2 := TGet():New(30,80,{|u| IIF(Pcount()>0,cGet2:=u,cGet2)},oDlg1,120,010,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGet2,,,, )
+
+
+    oButton1 := TButton():New( 50, 10, "Mostar nome",oDlg1,{|| MsgInfo(cGet1,"Conteudo digitado")}, 60,15,,oFont1,.F.,.T.,.F.,,.F.,,,.F. )
+
+    oDlg1:Activate(,,,.F.)
+
+Return 
