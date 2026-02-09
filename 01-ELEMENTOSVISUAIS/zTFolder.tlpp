@@ -1,0 +1,29 @@
+#Include "Totvs.ch"
+#Include "Protheus.ch"
+
+/*
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Programa ºzTFolder   ºAutor Caio Lima Almeida             ºData data º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Desc     ºDescricao da funcao                                    º±±
+±±º          ºcaso necessario, duplique ou apague esta linha              º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Uso      ºEmpresa de uso                                         º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+*/ 
+
+User Function zTFolder()
+    Local oDlg1
+    Local oFolder
+    Local aFolder
+
+    oDlg1 := TDialog():New(0,0,300,400,'Painel de Abas',,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+
+    aFolder := {"Aba01","Aba02","Aba03"}
+    oFolder := TFolder():New(0,0,aFolder,aFolder,oDlg1,,,,.T.,,200,200)
+
+    oDlg1:Activate(,,,.T.)
+Return
