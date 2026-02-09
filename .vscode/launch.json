@@ -9,8 +9,12 @@
 			"isMultiSession": true,
 			"enableTableSync": true
 		}
-
 	],
-	"lastProgramExecuted": "<cancel>",
-	"lastProgramArguments": []
+	"lastProgramExecuted": "u_zTFolder",
+	"lastProgramArguments": [],
+	"lastPrograms": [
+		{
+			"label": "u_zTFolder"
+		}
+	]
 }
