@@ -1,0 +1,34 @@
+#Include 'Totvs.ch'
+#Include 'Protheus.ch'
+
+/*
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Programa ºzTRadmenu   ºAutor autor             ºData data º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Desc     ºDescricao da funcao                                    º±±
+±±º          ºcaso necessario, duplique ou apague esta linha              º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Uso      ºEmpresa de uso                                         º±±`
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+*/
+
+User Function zTRadmenu()
+    Local oDlg1
+    Local aOpcoes  := {'Feliz','Animado','Eufórico','Triste','Pensativo','Proteuzando','Codificando','Vagando na net','Só no Insta', 'O pai tá on'}
+    Local nOpcao    := 7
+    Local oRadio
+    Local oButton1
+
+    oDlg1 := TDialog():New(0,0,500,500,'Painel de Opçoões',,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+    oRadio := TRadMenu():New (10,10,aOpcoes,{ |u| iif(PCount()>0,nOpcao := u,nOpcao)},oDlg1,,,,,,,,100,12,,,,.T.)
+    
+    oButton1 := TButton():New(10, 60,"Mostar escolha",oDlg1,{||MsgInfo(aOpcoes[nOpcao],'Hoje você esta: ')}, 40,10,,,.F.,.T.,.F.,,.F.,,,.F. ) 
+
+
+
+    oDlg1:Activate(,,,.T.)
+
+Return
