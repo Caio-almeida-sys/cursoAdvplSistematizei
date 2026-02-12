@@ -1,0 +1,35 @@
+#Include 'Totvs.ch'
+#Include 'Protheus.ch'
+
+/*
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Programa ºzTListbox   ºAutor autor             ºData data º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Desc     ºDescricao da funcao                                    º±±
+±±º          ºcaso necessario, duplique ou apague esta linha              º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Uso      ºEmpresa de uso                                         º±±`
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+*/
+
+User Function zTListbox()
+    Local oDlg1
+    Local aOpcoes  := {'Feliz','Animado','Eufórico','Triste','Pensativo','Proteuzando','Codificando','Vagando na net','Só no Insta', 'O pai tá on'}
+    Local nOpcao    := 1 
+    Local oListBox
+    Local oButton1
+
+    oDlg1 := TDialog():New(0,0,500,500,'Painel de Lista',,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+
+    oListBox := TListbox():New(030,010, { |u| iif(PCount()>0,nOpcao:=u,nOpcao)}, aOpcoes, 55, 100,, oDlg1,,,,.T.)
+
+    oListBox:bChange := { ||MsgInfo('Item mudado para: ' + aOpcoes[nOpcao],'Atenção')}
+
+    oButton1 := TButton():New(10, 10,"Mostar escolha",oDlg1,{||MsgInfo(aOpcoes[nOpcao],'Hoje você esta: ')}, 60,15,,,.F.,.T.,.F.,,.F.,,,.F. ) 
+
+    oDlg1:Activate(,,,.T.)
+
+Return

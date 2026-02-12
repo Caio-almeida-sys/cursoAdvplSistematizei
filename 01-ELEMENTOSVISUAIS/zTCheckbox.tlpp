@@ -1,0 +1,98 @@
+#Include 'Totvs.ch'
+#Include 'Protheus.ch'
+
+/*
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Programa ºzTCheckBox   ºAutor autor             ºData data º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Desc     ºDescricao da funcao                                    º±±
+±±º          ºcaso necessario, duplique ou apague esta linha              º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Uso      ºEmpresa de uso                                         º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+*/
+User Function zTCheckBox()
+    Local oDlg1
+    Local oCheck1
+    Local oCheck2
+    Local oButton1 
+    Local oButton2
+    Local oButton3
+    
+    Private lCheck1 := .F.
+    Private lCheck2 := .F.
+
+    oDlg1 := TDialog():New(0,0,500,500,'Painel de CheckBox',,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+
+    oButton1 := TButton():New(01, 01,"Mostar escolha",oDlg1,{ || CheckOptions()}, 60,15,,,.F.,.T.,.F.,,.F.,,,.F. )
+
+    oCheck1 := TCheckBox():New(20,01,'CheckBox 001',{ || lCheck1},oDlg1,100,210,,{ || lCheck1 := !lCheck1, IIF(lCheck1, MsgInfo("Está MARCADO", "Status"), MsgInfo("Está DESMARCADO","Status"))},,,,,,.T.,,,)
+
+    oCheck2 := TCheckBox():New(30,01,'CheckBox 002',,oDlg1,100,210,,,,,,,,.T.,,,)
+    oCheck2:bSetGet   := { || lCheck2}
+    oCheck2:bLClicked := { || lCheck2 := !lCheck2, IIF(lCheck2 =.T. , MsgInfo("Está MARCADO", "Status"), MsgInfo("Está DESMARCADO","Status"))}
+
+    oButton2 := TButton():New(40, 01,"Marcar Todos",oDlg1,{ || Marcartodos()}, 60,15,,,.F.,.T.,.F.,,.F.,,,.F. )
+    oButton3 := TButton():New(40, 65,"Desmarcar Todos",oDlg1,{ || Desmarcartodos()}, 60,15,,,.F.,.T.,.F.,,.F.,,,.F. )
+
+
+    oDlg1:Activate(,,,.T.)
+Return
+
+
+/*
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Programa ºCheckOptions   ºAutor Caio Almeida         ºData 11/02/2026 º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Desc     ºValida as seleções do Checkbox                                   º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+*/
+Static Function CheckOptions()
+
+    If lCheck1 .and. lCheck2 = .F. 
+        MsgInfo('Somente o Check1 está marcado.','Atenção')
+    ElseIf lCheck2 .and. !lCheck1
+        MsgInfo('Somente o Check2 está marcado.','Atenção')
+    ElseIf lCheck1 .and. lCheck2
+        MsgInfo('Todas as opções estão marcadas.','Atenção')
+    else
+        MsgInfo('Nenhuma opção esta marcada.','Atenção')
+    EndIf
+Return
+
+
+/*
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Programa ºMarcartodos   ºAutor Caio Almeida            ºData 11/02/26 º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Desc     ºFunção criada para marcar todos os checkbox                 º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+*/
+Static Function Marcartodos()
+    lCheck1 := .T.
+    lCheck2 := .T.
+
+Return
+
+
+/*
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Programa ºDesmarcartodos   ºAutor autor             ºData data º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Desc     ºFunção criada para marcar todos os checkbox                 º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+*/
+Static Function Desmarcartodos()
+    lCheck1 := .F.
+    lCheck2 := .F.
+
+Return
