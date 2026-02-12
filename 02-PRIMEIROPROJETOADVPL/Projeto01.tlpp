@@ -1,0 +1,150 @@
+#Include 'Totvs.ch'
+#Include 'Protheus.ch'
+
+
+
+/*
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Programa ºProjeto01   ºAutor Caio Almeida             ºData 12/02/26  º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Desc     ºCriacao da primeira tela no protheus                        º±±
+±±º          ºcaso necessario, duplique ou apague esta linha              º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+±±º Uso      ºEmpresa de uso                                         º±±
+±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±
+§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+*/
+User Function Projeto01()
+
+    //§§§§§§§§§§§§§§§§§§§
+    //ºVariaveis da telaº
+    //§§§§§§§§§§§§§§§§§§§
+    Private oDlg1
+    Private cTituloJanela  := 'PROJETO01 - Primeira tela em ADVPL Protheus'
+
+    //§§§§§§§§§§§§§§§§§§§§
+    //ºvariaveis das abasº
+    //§§§§§§§§§§§§§§§§§§§§
+    Private oFolder
+    Private aFolder
+
+    //§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+    //ºVariaveis referente aos objetos da filder Dados pessoaisº
+    //§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+    Private oSayNome
+    Private oGetNome
+    Private cGetNome
+    Private oSayNomeReduz
+    Private oGetNomeReduz
+    Private cGetNomeReduz
+    Private oSayDatNasc
+    Private oGetDatNasc
+    Private dGetDatNasc
+    Private oSayDDDCel
+    Private oGetDDDCel
+    Private cGetDDDCel
+    Private oSayCel
+    Private oGetCel
+    Private cGetCel
+    
+    Private oGroupSexo
+
+    Private aSexo       := {'Masculino','Feminino'}
+    Private nSexo       := 1
+    Private oRadioSexo
+
+    Private oSayCPF
+    Private oGetCPF
+    Private cGetCPF
+
+
+
+    //§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+    //ºVariaveis referente aos objetos da filder Enderecoº
+    //§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+    Private oSayEndereco
+    Private oGetEndereco
+    Private cGetEndereco
+
+    Private oSayBairro
+    Private oGetBairro
+    Private cGetBairro   
+
+    Private oSayImovel
+    Private aImoveis        := {'Casa','Apartamento','Outro'}
+    Private cImovel         := aImoveis[1]
+    Private oComboImovel
+
+
+    //§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+    //ºVariaveis referente aos objetos da filder Outrosº
+    //§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+
+
+
+
+
+    //§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+    //ºCria a Dialog da tela        º
+    //§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+    oDlg1 := TDialog():New(0,0,720,1280,cTituloJanela,,,,,CLR_BLACK,CLR_WHITE,,,.T.)
+
+    aFolder := {'Dados Pessoais','Endereço','Outros'}
+	oFolder := TFolder():New(5,5,aFolder,aFolder,oDlg1,,,,.T.,,600,200)
+
+
+    //§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+    //ºElementos visuais da folder Dados pessoaisº
+    //§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+
+    oSayNome := TSay():New(01, 05, {|| 'Nome'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    cGetNome := Space(30)
+    oGetNome := TGet():New(10, 05,{ |u| IIF(Pcount()>0,cGetNome:=u,cGetNome)},oFolder:aDialogs[1],096,009,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetNome,,,, )
+
+    oSayNomeReduz := TSay():New(01, 110, {|| 'Nome Reduzido'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    cGetNomeReduz := Space(30)
+    oGetNomeReduz := TGet():New(10, 110,{ |u| IIF(Pcount()>0,cGetNomeReduz:=u,cGetNomeReduz)},oFolder:aDialogs[1],60,009,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetNomeReduz,,,, )
+
+    oSayDatNasc := TSay():New(01, 180, {|| 'Data de Nascimento'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    dGetDatNasc := Date()
+    oGetDatNasc := TGet():New(10, 180,{ |u| IIF(Pcount()>0,dGetDatNasc:=u,dGetDatNasc)},oFolder:aDialogs[1],60,009,"",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,/**/,,,,.T.)
+
+    oSayDDDCel := TSay():New(01, 250, {|| 'DDD Cel'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    cGetDDDCel := Space(4)
+    oGetDDDCel := TGet():New(10, 250,{ |u| IIF(Pcount()>0,cGetDDDCel:=u,cGetDDDCel)},oFolder:aDialogs[1],20,009,"@E (99)",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetDDDCel,,,, )
+
+    oSayCel := TSay():New(01, 280, {|| 'Celular'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    cGetCel := Space(11)
+    oGetCel := TGet():New(10, 280,{ |u| IIF(Pcount()>0,cGetCel:=u,cGetCel)},oFolder:aDialogs[1],40,009,"@E 9-9999-9999",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetCel,,,, )
+
+    oGroupSexo := TGroup():New(01,330,50,430,'Sexo',oFolder:aDialogs[1],,,.T.)
+
+    oRadioSexo := TRadMenu():New (10,340,aSexo,{ |u| iif(PCount()>0,nSexo := u,nSexo)},oFolder:aDialogs[1],,,,,,,,60,20,,,,.T.)
+
+    oSayCPF := TSay():New(25, 05, {|| 'CPF'},oFolder:aDialogs[1],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    cGetCPF := Space(14)
+    oGetCPF := TGet():New(35, 05,{ |u| IIF(Pcount()>0,cGetCPF:=u,cGetCPF)},oFolder:aDialogs[1],096,009,"@E 999.999.999-99",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetCPF,,,, )
+
+    
+    //§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+    //ºElementos visuais da folder Enderecoº
+    //§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+
+
+    oSayEndereco := TSay():New(01, 05, {|| 'Endereço'},oFolder:aDialogs[2],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    cGetEndereco := Space(40)
+    oGetEndereco := TGet():New(10, 05,{ |u| IIF(Pcount()>0,cGetEndereco:=u,cGetEndereco)},oFolder:aDialogs[2],096,009,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetEndereco,,,, )
+
+    oSayBairro := TSay():New(01, 110, {|| 'Bairro'},oFolder:aDialogs[2],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    cGetBairro := Space(30)
+    oGetBairro := TGet():New(10, 110,{ |u| IIF(Pcount()>0,cGetBairro:=u,cGetBairro)},oFolder:aDialogs[2],060,009,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cGetBairro,,,, )
+
+    oSayImovel   := TSay():New(01, 180, {|| 'Tipo de Imóvel'},oFolder:aDialogs[2],,,,,,.T.,CLR_BLUE,CLR_WHITE,300,20)
+    oComboImovel := TComboBox():New(010,180,{ |u|if(PCount()>0,cImovel:=u,cImovel)}, aImoveis,60,20,oFolder:aDialogs[2],,,,,,.T.,,,,,,,,,'cImovel')
+    
+
+    oDlg1:Activate(,,,.T.)
+
+Return
